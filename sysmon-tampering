@@ -1,0 +1,14 @@
+### WinEventLog ###
+(index=wineventlog EventCode=4688 (process_name=sysmon*.exe (CommandLine=" -u" OR CommandLine=" -u force")) OR (process_name="Sysmon*.exe" process_command_line_arguments="-u" OR process_command_line_arguments="-u force"))
+
+### Sysmon Uninstall ###
+(index=winsysmon EventCode=1 process_name=sysmon*.exe (CommandLine="*-u" OR CommandLine="*-u force")) | table  _time CommandLine parent_process parent_process_name parent_process_path process_name process_path process_name NewProcessName process_command_line_process process_command_line_arguments
+
+### Powershell Transcripts ###
+index=winpowershell sourcetype="powershell:transcript" "Sysmon* -u" OR "Sysmon* -u force*"
+
+### Powershell ScriptBlockText ###
+index=winpowershell source="XmlWinEventLog:Microsoft-Windows-PowerShell/Operational" ScriptBlockText IN ("Sysmon* -u" "./Sysmon* -u" "./Sysmon* -u force" "Sysmon* -u force")
+
+### WinEventlog EventCode 4688 SysmonDrv Unload via fltmc.exe ###
+index=wineventlog Channel=Security EventCode=4688  (CommandLine IN ("fltmc.exe  unload SysmonDrv")) OR (process_name=fltMC.exe AND process_command_line_arguments="unload SysmonDrv") | table  _time CommandLine parent_process parent_process_name parent_process_path process_name process_path process_name NewProcessName process_command_line_process process_command_line_arguments
