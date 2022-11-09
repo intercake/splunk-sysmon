@@ -12,3 +12,8 @@ index=winpowershell source="XmlWinEventLog:Microsoft-Windows-PowerShell/Operatio
 
 ### WinEventlog EventCode 4688 SysmonDrv Unload via fltmc.exe ###
 index=wineventlog Channel=Security EventCode=4688  (CommandLine IN ("fltmc.exe  unload SysmonDrv")) OR (process_name=fltMC.exe AND process_command_line_arguments="unload SysmonDrv") | table  _time CommandLine parent_process parent_process_name parent_process_path process_name process_path process_name NewProcessName process_command_line_process process_command_line_arguments
+
+### Sysmon SysmonDrv Unload via fltmc.exe ###
+
+### Sysmon Driver Error ###
+index=winsysmon EventCode=255 description="Error occured within Sysmon"
