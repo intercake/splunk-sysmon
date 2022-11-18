@@ -17,3 +17,9 @@ index=wineventlog Channel=Security EventCode=4688  (CommandLine IN ("fltmc.exe  
 
 ### Sysmon Driver Error ###
 index=winsysmon EventCode=255 description="Error occured within Sysmon"
+
+
+References:
+https://www.darkoperator.com/blog/2018/10/5/operating-offensively-against-sysmon
+https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.yaml
+https://lolbas-project.github.io/lolbas/Binaries/FltMC/
