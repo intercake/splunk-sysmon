@@ -23,3 +23,4 @@ References:
 https://www.darkoperator.com/blog/2018/10/5/operating-offensively-against-sysmon
 https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1562.001/T1562.001.yaml
 https://lolbas-project.github.io/lolbas/Binaries/FltMC/
+https://github.com/splunk/security_content/blob/18f63553a9dc1a34122fa123deae2b2f9b9ea391/detections/endpoint/scheduled_task_deleted_or_created_via_cmd.yml
